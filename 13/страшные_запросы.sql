@@ -64,3 +64,8 @@ string_agg(a.actor_name,
 using(film_id) join actor a using(actor_id) join film f using(film_id)
 join producer p using(producer_id) group by
 p.producer_id, f.film_id;
+
+9)select f.title, string_agg(distinct g.ganres, ',') as ganre, concat(p.name, ' ', p.surname) as producer, string_agg(distinct a.actor_name, ',') as actors from actor_film a_f inner join producer_film p_f                                                                
+using(film_id) join actor a using(actor_id) join film f using(film_id)
+join producer p using(producer_id) join ganre_film g_f using(film_id) join ganre g using(ganre_id) group by
+p.producer_id, f.film_id;
