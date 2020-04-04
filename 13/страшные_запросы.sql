@@ -44,9 +44,23 @@ join producer_film p_f using(film_id) inner join actor a using(actor_id)
 inner join film f using(film_id) inner join producer p
 using(producer_id) where film_id=3 group by p.producer_id, f.film_id;
 
+select concat(' Фильм ', '"', f.title, '"', ' был снят режиссёром по
+имени ', p.name, ' ', p.surname, '. В нём снимались: ',
+string_agg(a.actor_name, ', '), ' и другие.') from actor_film a_f inner
+join producer_film p_f using(film_id) inner join actor a using(actor_id)
+inner join film f using(film_id) inner join producer p
+using(producer_id) group by p.producer_id, f.film_id;
+
 7) select f.title, concat(p.name, ' ', p.surname) as producer,
 string_agg(a.actor_name,
 ',') as actors from actor_film a_f inner join producer_film p_f
 using(film_id) join actor a using(actor_id) join film f using(film_id)
 join producer p using(producer_id) where film_id=1 group by
+p.producer_id, f.film_id;
+
+select f.title, concat(p.name, ' ', p.surname) as producer,
+string_agg(a.actor_name,
+',') as actors from actor_film a_f inner join producer_film p_f
+using(film_id) join actor a using(actor_id) join film f using(film_id)
+join producer p using(producer_id) group by
 p.producer_id, f.film_id;
