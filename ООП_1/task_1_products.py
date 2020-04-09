@@ -21,7 +21,7 @@ class Basket():
         total_sum=0
         for p, q in self.buy_list:
             total_sum+=p.price_total(q)
-        return total_sum
+        return ('Общая сумма покупки = %s грн.' %(total_sum))
     
         
     def totally_eatable(self):
@@ -39,7 +39,7 @@ bananas=Product(price=25, category='food', name='banana', unit='кг')
 milk=Product(price=28.90, category='food', name='Ферми', unit='л')
 wine=Product(price=150, category='alcohol', name='VinishKo', unit='бут.')
 b=Basket([[bananas, 1.5], [bread, 3], [cheese, 0.3], [shampoo, 2], [milk, 1], [wine, 3]])
-print('Общая сумма покупки = %s грн.' % b.total())
+print(b.total())
 print(b.totally_eatable())
 
 
