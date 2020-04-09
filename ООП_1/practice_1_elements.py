@@ -20,5 +20,5 @@ class Element():
 
 oxygen=Element(melt_temp=-218, vapor_temp=-182)
 iron=Element(melt_temp=1538, vapor_temp=2862)
-print(oxygen.agg_state(-190, "K"))
+print(oxygen.agg_state(-190, "F"))
 print(iron.agg_state(2000, "K"))
