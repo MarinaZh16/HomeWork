@@ -1,19 +1,17 @@
-class Product():
+class Product:
     def __init__(self, price, category, name, unit):
         self.price=price
         self.category=category
         self.name=name
         self.unit=unit
     def is_eatable(self):
-        if self.category=="household chemicals":
-            return False
-        return True
+        return self.category!="household chemicals"
     
     def price_total(self, quantity):
         return quantity*self.price
 
     
-class Basket():
+class Basket:
     def __init__(self, buy_list):
         self.buy_list=buy_list
     
@@ -25,10 +23,8 @@ class Basket():
     
         
     def totally_eatable(self):
-        for i in self.buy_list:
-            if i[0].is_eatable()==False:
-                return ('Не все продукты съедобны!')
-        return ('Все продукты съедобны!')
+        return 'Все продукты съедобны!' if all([i[0].is_eatable() for i in self.buy_list]) else 'Не все продукты съедобны!'
+       
                 
         
 
@@ -41,5 +37,6 @@ wine=Product(price=150, category='alcohol', name='VinishKo', unit='бут.')
 b=Basket([[bananas, 1.5], [bread, 3], [cheese, 0.3], [shampoo, 2], [milk, 1], [wine, 3]])
 print(b.total())
 print(b.totally_eatable())
+
 
 
