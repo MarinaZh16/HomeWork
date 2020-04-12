@@ -113,4 +113,5 @@ print(str(p_2), p_2.check_salary())
 print(str(r_2), r_2.check_salary(18))
 print(str(r_2), r_2.full_salary())
 print(r_1<r_2)
+print(r_1<p_1)# вот так можно сравнить R и P по з/п 
 print(p_1.SuperP(p_2))
