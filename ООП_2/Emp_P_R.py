@@ -91,7 +91,7 @@ class Programmer(Employee):
         emp_work=super().work()[:-1]
         return emp_work+' and start coding'
     
-    def SuperP(self, other):
+    def super_p(self, other):
         tech_stack=self.tech_stack+other.tech_stack
         closed_this_monht=self.closed_this_monht+other.closed_this_monht
         return 'Superskills: %s ; number of closed tasks : %s' %(list(set(tech_stack)), closed_this_monht)
@@ -112,4 +112,4 @@ print(str(P2), P2.check_salary(18))
 print(str(R2), R2.full_salary())
 print(R1<R2)
 print(R1==P1)
-print(P1.SuperP(P2))
+print(P1.super_p(P2))
