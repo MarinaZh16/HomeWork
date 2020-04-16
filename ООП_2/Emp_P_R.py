@@ -8,7 +8,7 @@ for day in range(diff):
     if(month_start + timedelta(day)).weekday() not in weekend:
         day_count+=1
 
-
+            
 class Employee:
     def __init__(self, name, surname, email, phone_number, salary):
         self.name=name
@@ -16,7 +16,7 @@ class Employee:
         self.email=email
         self.phone_number=phone_number
         self.salary=salary
-
+    
     def work(self):
         return 'I come to the office.'
         
@@ -40,6 +40,9 @@ class Employee:
 
     def __ne__(self, other):
         return 'NE: %s' %(self.salary != other.salary)
+
+    def __str__(self):
+        return '%s: %s %s' %(self.__class__.__name__, self.name, self.surname)
     
 
 class Recruiter(Employee):
@@ -59,10 +62,6 @@ class Recruiter(Employee):
     def work(self):
         emp_work=super().work()[:-1]
         return emp_work+' and start hiring'
-
-    def __str__(self):
-        return 'Recruiter: %s %s' %(self.name, self.surname)
-
 
 class Programmer(Employee):
     def __init__(self, name, surname, email, phone_number, salary, tech_stack, closed_this_monht):
@@ -92,26 +91,25 @@ class Programmer(Employee):
         emp_work=super().work()[:-1]
         return emp_work+' and start coding'
     
-    def __str__(self):
-        return 'Programmer: %s %s' %(self.name, self.surname)
-
     def SuperP(self, other):
         tech_stack=self.tech_stack+other.tech_stack
         closed_this_monht=self.closed_this_monht+other.closed_this_monht
         return 'Superskills: %s ; number of closed tasks : %s' %(list(set(tech_stack)), closed_this_monht)
 
-p_1=Programmer('Марина', 'Жидкова', 'mzh@gmail.com', '066xxxxxxx', 22, ['python', 'C++', 'Ruby', 'C'], 3)
-r_1=Recruiter('Женя', 'Татарчук', 'zht@gmail.com', '099xxxxxxx', 20, 1)
-p_2=Programmer('Влад', 'Жидков', 'vzh@gmail.com', '066xxxxxxx', 23, ['python', 'C++', 'Java'], 2)
-r_2=Recruiter('Яша', 'Кульбака', 'yak@gmail.com', '099xxxxxxx', 19, 2)
-print(p_1.work())
-print(r_1.work())
-print(str(p_1))
-print(str(r_1))
-print(p_1 < p_2)
-print(str(p_2), p_2.check_salary())
-print(str(r_2), r_2.check_salary(18))
-print(str(r_2), r_2.full_salary())
-print(r_1<r_2)
-print(r_1<p_1)# вот так можно сравнить R и P по з/п 
-print(p_1.SuperP(p_2))
+P1 = Programmer('Marina', 'Zhidkova', 'mzh@gmail.com', '066xxxxxxx', 22,
+                ['python', 'C++', 'Ruby', 'C'], 3)
+P2 = Programmer('Vlad', 'Zhidkov', 'vzh@gmail.com', '066xxxxxxx', 23,
+                ['python', 'C++', 'Java'], 2)
+R1 = Recruiter('Zhenya', 'Tatarchuk', 'zht@gmail.com', '099xxxxxxx', 22, 1)
+R2 = Recruiter('Yasha', 'Kulbaka', 'yak@gmail.com', '099xxxxxxx', 19, 2)
+print(P1.work())
+print(R1.work())
+print(str(P1))
+print(str(R1))
+print(P1 < P2)
+print(str(P2), P2.check_salary())
+print(str(P2), P2.check_salary(18))
+print(str(R2), R2.full_salary())
+print(R1<R2)
+print(R1==P1)
+print(P1.SuperP(P2))
