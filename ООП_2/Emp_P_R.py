@@ -46,7 +46,8 @@ class Employee:
     
 
 class Recruiter(Employee):
-    def __init__(self, name, surname, email, phone_number, salary, hired_this_monht):
+    def __init__(self, name, surname, email, phone_number, salary,
+                 hired_this_monht):
         super().__init__(name, surname, email, phone_number, salary)
         self.hired_this_monht=hired_this_monht
 
@@ -64,7 +65,8 @@ class Recruiter(Employee):
         return emp_work+' and start hiring'
 
 class Programmer(Employee):
-    def __init__(self, name, surname, email, phone_number, salary, tech_stack, closed_this_monht):
+    def __init__(self, name, surname, email, phone_number, salary, tech_stack,
+                 closed_this_monht):
         super().__init__(name, surname, email, phone_number, salary)
         self.tech_stack=tech_stack
         self.closed_this_monht=closed_this_monht
@@ -94,7 +96,8 @@ class Programmer(Employee):
     def super_p(self, other):
         tech_stack=self.tech_stack+other.tech_stack
         closed_this_monht=self.closed_this_monht+other.closed_this_monht
-        return 'Superskills: %s ; number of closed tasks : %s' %(list(set(tech_stack)), closed_this_monht)
+        return 'Superskills: %s ; number of closed tasks : %s'\
+               %(list(set(tech_stack)), closed_this_monht)
 
 P1 = Programmer('Marina', 'Zhidkova', 'mzh@gmail.com', '066xxxxxxx', 22,
                 ['python', 'C++', 'Ruby', 'C'], 3)
