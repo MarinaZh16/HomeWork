@@ -19,7 +19,6 @@ class Employee:
         return 'I come to the office.'
         
     def check_salary(self, days=day_count):
-       
         return '%s $' %(self.salary * days)
 
     def __lt__(self, other):
