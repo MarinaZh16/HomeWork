@@ -19,25 +19,31 @@ class Employee:
         return 'I come to the office.'
         
     def check_salary(self, days=day_count):
-        return '%s $' %(self.salary * days)
+        return self.salary * days
 
     def __lt__(self, other):
-        return 'LT: %s' %(self.salary < other.salary) 
+        print('LT')
+        return self.salary < other.salary 
 
     def __gt__(self, other):
-        return 'GT: %s' %(self.salary > other.salary)
+        print('GT')
+        return self.salary > other.salary
         
     def __eq__(self, other):
-        return 'EQ: %s' %(self.salary == other.salary)
+        print('EQ')
+        return self.salary == other.salary
 
     def __le__(self, other):
-        return 'LE: %s' %(self.salary <= other.salary)
+        print('LE')
+        return self.salary <= other.salary
 
     def __ge__(self, other):
-        return 'GE: %s' %(self.salary >= other.salary)
+        print('GE')
+        return self.salary >= other.salary
 
     def __ne__(self, other):
-        return 'NE: %s' %(self.salary != other.salary)
+        print('NE')
+        return self.salary != other.salary
 
     def __str__(self):
         return '%s: %s %s' %(self.__class__.__name__, self.name, self.surname)
@@ -62,22 +68,28 @@ class Programmer(Employee):
         self.closed_this_month = closed_this_month
 
     def __lt__(self, other):
-        return 'Stack LT: %s' %(len(self.tech_stack) < len(other.tech_stack))  
+        print('Stack LT')
+        return len(self.tech_stack) < len(other.tech_stack)  
 
     def __gt__(self, other):
-        return 'Stack GT: %s' %(len(self.tech_stack) > len(other.tech_stack))
+        print('Stack GT')
+        return len(self.tech_stack) > len(other.tech_stack)
 
     def __eq__(self, other):
-        return 'Stack EQ:%s' %(len(self.tech_stack) == len(other.tech_stack))
+        print('Stack EQ')
+        return len(self.tech_stack) == len(other.tech_stack)
 
     def __le__(self, other):
-        return 'Stack LE: %s' %(len(self.tech_stack) <= len(other.tech_stack))
+        print('Stack LE')
+        return len(self.tech_stack) <= len(other.tech_stack)
 
     def __ge__(self, other):
-        return 'Stack GE:%s' %(len(self.tech_stack) >= len(other.tech_stack))
+        print('Stack GE')
+        return len(self.tech_stack) >= len(other.tech_stack)
 
     def __ne__(self, other):
-        return 'Stack NE: %s' %(len(self.tech_stack) != len(other.tech_stack))
+        print('Stack NE')
+        return len(self.tech_stack) != len(other.tech_stack)
 
     def work(self):
         emp_work = super().work()[:-1]
