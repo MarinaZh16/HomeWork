@@ -5,20 +5,26 @@ class Employee:
         self.email = email
         self.phone_number = phone_number
         self.salary = salary
-    from datetime import date, timedelta
-    now = date.today()
-    month_start = date(now.year, now.month, 1)
-    weekend = [5, 6]
-    diff = (now - month_start).days + 1
-    day_count = 0
-    for day in range(diff):
-        if(month_start + timedelta(day)).weekday() not in weekend:
-            day_count += 1
 
     def work(self):
         return 'I come to the office.'
-        
-    def check_salary(self, days=day_count):
+
+    @staticmethod
+    def get_workdays():
+        from datetime import date, timedelta
+        now = date.today()
+        month_start = date(now.year, now.month, 1)
+        weekend = [5, 6]
+        diff = (now - month_start).days + 1
+        day_count = 0
+        for day in range(diff):
+            if(month_start + timedelta(day)).weekday() not in weekend:
+                day_count += 1
+        return day_count    
+    
+    def check_salary(self, days=0):
+        if not days:
+            return self.salary*self.get_workdays()
         return self.salary * days
 
     def __lt__(self, other):
@@ -108,14 +114,14 @@ P2 = Programmer('Vlad', 'Zhidkov', 'vzh@gmail.com', '066xxxxxxx', 23,
                 ['python', 'C++', 'Java'], 2)
 R1 = Recruiter('Zhenya', 'Tatarchuk', 'zht@gmail.com', '099xxxxxxx', 22, 1)
 R2 = Recruiter('Yasha', 'Kulbaka', 'yak@gmail.com', '099xxxxxxx', 19, 2)
-print(P1.work())
-print(R1.work())
-print(str(P1))
-print(str(R1))
-print(P1 < P2)
-print(str(P2), P2.check_salary())
-print(str(P2), P2.check_salary(18))
-print(R1 < R2)
-print(R1 == P1)
-print(P1.super_p(P2))
+# print(P1.work())
+# print(R1.work())
+# print(str(P1))
+# print(str(R1))
+# print(P1 < P2)
+# print(str(P2), P2.check_salary())
+# print(str(P2), P2.check_salary(18))
+# print(R1 < R2)
+# print(R1 == P1)
+# print(P1.super_p(P2))
 
